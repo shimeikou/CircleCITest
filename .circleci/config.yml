@@ -1,8 +1,16 @@
 version: 2
 jobs:
   build:
+    branches:
+      only:
+        - develop
     docker:
       - image: circleci/ruby:2.4.1
     steps:
       - checkout
-      - run: echo "A first hello"
+      - run: echo "1"
+      - run: echo "2"
+      - run: echo "3"
+      - run: echo "4"
+      - run: echo "5"
+      

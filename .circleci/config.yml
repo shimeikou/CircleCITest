@@ -5,12 +5,16 @@ jobs:
       only:
         - develop
     docker:
-      - image: circleci/ruby:2.4.1
+      - image: circleci/golang
     steps:
       - checkout
-      - run: echo "1"
-      - run: echo "2"
-      - run: echo "3"
-      - run: echo "4"
-      - run: echo "5"
-      
+      - run: 
+        param="ABC"
+        echo $param
+        echo $CI
+        echo $CIRCLE_BRANCH
+        echo $CIRCLE_BUILD_NUM
+        echo $CIRCLE_PROJECT_REPONAME
+        echo $CIRCLE_SHA1
+        echo $CIRCLE_NODE_TOTAL
+        echo $CIRCLE_NODE_INDEX

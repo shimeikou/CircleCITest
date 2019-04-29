@@ -31,5 +31,5 @@ jobs:
       - run: php -v
       - attach_workspace:
           at: my_workspace
-      - run: cat php_info;
+      - run: cat my_workspace/php_info;
         

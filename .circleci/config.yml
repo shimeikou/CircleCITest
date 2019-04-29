@@ -4,7 +4,9 @@ workflows:
   php1_and_php2:
     jobs:
       - php1
-      - php2
+      - php2:
+          requires:
+          - php1 
 jobs:
   php1:
     docker:
@@ -13,7 +15,12 @@ jobs:
       - checkout
       - run: echo "A first hello"
       - run: sleep 25
-      - run: php -i
+      - run: mkdir -p my_workspace
+      - run: php -i>my_workspace/php_info
+      - persist_to_workspace:
+        root: my_workspace
+        paths:
+          - php_info
   php2:
     docker:
       - image: circleci/php:7.1-node-browsers
@@ -22,3 +29,11 @@ jobs:
       - run: echo "A more familiar hi"
       - run: sleep 25
       - run: php -v
+      - attach_workspace:
+        at: my_workspace
+      - run: |
+        if [ -f "my_workspace/php_info" ]; then
+          cat php_info;
+        else
+          echo "Nope!"; exit 1
+        fi

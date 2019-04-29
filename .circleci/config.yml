@@ -18,9 +18,9 @@ jobs:
       - run: mkdir -p my_workspace
       - run: php -i>my_workspace/php_info
       - persist_to_workspace:
-        root: my_workspace
-        paths:
-          - php_info
+          root: my_workspace
+          paths:
+            - php_info
   php2:
     docker:
       - image: circleci/php:7.1-node-browsers

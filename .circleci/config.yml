@@ -1,6 +1,12 @@
 version: 2
+workflows:
+  version: 2
+  php1_and_php2:
+    jobs:
+      - php1
+      - php2
 jobs:
-  one:
+  php1:
     docker:
       - image: circleci/php:7.1-node-browsers
     steps:
@@ -8,7 +14,7 @@ jobs:
       - run: echo "A first hello"
       - run: sleep 25
       - run: php -i
-  two:
+  php2:
     docker:
       - image: circleci/php:7.1-node-browsers
     steps:
@@ -16,9 +22,3 @@ jobs:
       - run: echo "A more familiar hi"
       - run: sleep 25
       - run: php -v
-workflows:
-  version: 2
-  one_and_two:
-    jobs:
-      - one
-      - two

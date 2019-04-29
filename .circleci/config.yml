@@ -31,9 +31,5 @@ jobs:
       - run: php -v
       - attach_workspace:
         at: my_workspace
-      - run: |
-        if [ -f "my_workspace/php_info" ]; then
-          cat php_info;
-        else
-          echo "Nope!"; exit 1
-        fi
+      - run: cat php_info;
+        

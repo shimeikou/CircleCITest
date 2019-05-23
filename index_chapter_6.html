@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <me0ta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Timer</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="css/style_chapter_6.css">
+</head>
+
+<body>
+    <div class="container">
+        <p id="timer">00:00:00</p>
+        <div>
+            <button type="button" id="start_stop" class="btn btn-lg btn-primary">start</button>
+        </div>
+
+    </div>
+    <script>
+        var flg = false;
+        var timerID;
+
+        document.getElementById('start_stop').addEventListener('click', function() {
+            flg = !flg;
+            if (flg) {
+                timerID = setInterval(goTimer, 10);
+            } else {
+                clearInterval(timerID);
+            }
+        });
+
+        var goTimer = function() {
+            var now = new Date();
+            document.getElementById('timer').innerHTML = now.getHours() + ':' + now.getMinutes() + ':' + now.getSeconds();
+        }
+    </script>
+</body>
+
+</html>
